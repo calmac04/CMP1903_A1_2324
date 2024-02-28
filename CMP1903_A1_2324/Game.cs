@@ -70,7 +70,7 @@ namespace CMP1903_A1_2324
             //increment the total accordingly
             sumtotal += Die1.rolledvalue;
             //read the new total to the user
-            Console.WriteLine("ne total");
+            Console.WriteLine("new total");
             Console.WriteLine(sumtotal);
         }
     }

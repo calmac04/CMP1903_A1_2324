@@ -13,6 +13,8 @@ namespace CMP1903_A1_2324
          * and one method that rolls the die, returns and integer and takes no parameters.
          */
 
+        //Property
+
 
 
         //Property
@@ -28,6 +30,10 @@ namespace CMP1903_A1_2324
             //return the random number
             return rolledvalue;
         }
+
+        //Method
+
+
 
     }
 }

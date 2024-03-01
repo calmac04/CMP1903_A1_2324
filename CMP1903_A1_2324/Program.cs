@@ -18,7 +18,7 @@ namespace CMP1903_A1_2324
             //create instance of testing class
             Testing test = new Testing();
             //run test method to test teh game and dice classes
-            test.testrun();
+            test.TestRun();
             //once testing has completed tell the user this is the case
             Console.WriteLine("test passed");
             //allow the program to access the game instantiated in test so that a running total can be used
@@ -26,7 +26,7 @@ namespace CMP1903_A1_2324
             //establish a loop variable
             bool loop = true;
             //loop until the user no longer wants to roll dice
-            while (loop != false)
+            while (loop == true)
             {
                 //ask the user if they want to roll another die
                 Console.WriteLine("roll another die y or n");
@@ -36,7 +36,7 @@ namespace CMP1903_A1_2324
                 if (reroll == "y")
                 {
                     //roll another die
-                    game.roll1();
+                    game.Roll1();
                     //maintain the loop
                     loop = true;
                 }

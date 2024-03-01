@@ -19,9 +19,16 @@ namespace CMP1903_A1_2324
 
         //Property
         //rolled value property to store what the die rolled
-        public int rolledvalue = 0;
+        private int rolledvalue;
+
+        public int RolledValue
+        {
+            get {return rolledvalue;}
+            set {rolledvalue = value;}
+        }
 
         //Method
+        //method randomly determines a number in teh rrange 1 to 6 inclusive and returns the value generated
         public int Roll()
         {
             //create a new random class instance

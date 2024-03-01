@@ -16,9 +16,10 @@ namespace CMP1903_A1_2324
          * rolls could be continous, and the totals and other statistics could be summarised for example.
          */
 
-        public int sumtotal = 0;
+        public int SumTotal = 0;
         //Methods
-        public int[] roll3()
+        //rolls 3 dice sums them and returns the data generated for the testing class to use
+        public int[] Roll3()
         {
             //create a new die 
             Die Die1 = new Die();
@@ -34,27 +35,27 @@ namespace CMP1903_A1_2324
             Die Die3 = new Die();
             Die3.Roll();
             //save the rolled values as variables for easier usage
-            int dice1 = Die1.rolledvalue;
-            int dice2 = Die2.rolledvalue;
-            int dice3 = Die3.rolledvalue;
+            int dice1 = Die1.RolledValue;
+            int dice2 = Die2.RolledValue;
+            int dice3 = Die3.RolledValue;
             //display the rolled numbers to the user
             Console.WriteLine("rolls");
             Console.WriteLine(dice1);
             Console.WriteLine(dice2);
             Console.WriteLine(dice3);
             //calculate a total for the rolls
-            sumtotal += Die1.rolledvalue + Die2.rolledvalue + Die2.rolledvalue;
-            //display the total to the user
+            SumTotal += Die1.RolledValue + Die2.RolledValue + Die2.RolledValue;
+            //display the total to the user 
             Console.WriteLine("total of rolls");
-            Console.WriteLine(sumtotal);
+            Console.WriteLine(SumTotal);
             //compile the rolls and and total for the testing data
-            int[] answers = { sumtotal, dice1, dice2, dice3 };
+            int[] answers = {SumTotal, dice1, dice2, dice3 };
             //return the data
             return answers;
         }
 
         //to allow for single rolls a second method is used
-        public void roll1()
+        public void Roll1()
         {
             //create a die
             Die Die1 = new Die();
@@ -62,12 +63,12 @@ namespace CMP1903_A1_2324
             Die1.Roll();
             //read the roll to the user
             Console.WriteLine("new roll");
-            Console.WriteLine(Die1.rolledvalue);
+            Console.WriteLine(Die1.RolledValue);
             //increment the total accordingly
-            sumtotal += Die1.rolledvalue;
+            SumTotal += Die1.RolledValue;
             //read the new total to the user
             Console.WriteLine("new total");
-            Console.WriteLine(sumtotal);
+            Console.WriteLine(SumTotal);
         }
 
 

@@ -33,11 +33,10 @@ namespace CMP1903_A1_2324
             Console.WriteLine("test die run");
             //debug test the die roll to ensure it is within bounds
             Debug.Assert(testDie.Roll() > 0 && testDie.Roll() < 7);
-            //pull the sum total from teh test data
+            //pull the sum total from the test data
             int data1 = testdata[0];
             //check total is within bounds
-            Debug.Assert(data1 > 2);
-            Debug.Assert(data1 < 19);
+            Debug.Assert(data1 > 2 && data1 <19);
             //inform user of the current test step
             Console.WriteLine("test game sum run");
         }

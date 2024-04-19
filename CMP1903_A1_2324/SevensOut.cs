@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace CMP1903_A1_2324
 {
-    internal class Program
+    internal class SevensOut : Game
     {
-        static void Main(string[] args)
-        {
-            Console.ReadLine();
-        }
     }
 }

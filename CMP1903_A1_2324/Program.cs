@@ -40,9 +40,9 @@ namespace CMP1903_A1_2324
                 else if (menuselect == 3)
                 {
                     data.display();
+                    data.highscores();
                 }
             }
-            Console.ReadLine();
         }
     }
 }

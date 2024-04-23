@@ -325,5 +325,68 @@ namespace CMP1903_A1_2324
             Console.Write(largestkey);
             Console.WriteLine("'s");
         }
-    }
+        public List<int> Testrun()
+        {
+            int pt = 0;
+            List<int> testdata = new List<int>();
+            int datacount = 1;
+            while (!gameend)
+            {
+                Check(Dice(5));
+                while (true)
+                {
+                    if (largestcount == 3)
+                    {
+                        pt += 3;
+                        break;
+                    }
+                    else if (largestcount == 4)
+                    {
+                        pt += 6;
+                        break;
+                    }
+                    else if (largestcount == 5)
+                    {
+                        pt += 12;
+                        break;
+                    }
+                    else if (largestcount <= 1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        List<int> newrolls = new List<int>();
+                        int toadd = largestkey + 0;
+                        newrolls.Clear();
+                        newrolls.Add(toadd);
+                        newrolls.Add(toadd);
+                        foreach (int item in Dice(3))
+                        {
+                            newrolls.Add(item);
+                        }
+                        newrolls.Remove(0);
+                        newrolls.Remove(0);
+                        int[] redoarray = new int[5];
+                        for (int i = 0; i < newrolls.Count; i++)
+                        {
+                            redoarray[i] = newrolls[i];
+                        }
+                        Check(redoarray);
+                        break;
+                    }
+                }
+                testdata[datacount] = largestcount;
+                datacount++;
+                Console.Write("score is ");
+                Console.WriteLine(p2);
+                if (pt >= 20)
+                {
+                    gameend = true;
+                }
+            }
+            testdata[0] = pt;
+            return testdata;
+        }
+    }        
 }

@@ -63,5 +63,52 @@ namespace CMP1903_A1_2324
                 Console.WriteLine();
             }
         }
+
+        public void highscores()
+        {
+            if (sevensstats.Count == 0) 
+            {
+                Console.WriteLine("no sevens out scores recorded");
+            }
+            else
+            {
+                int sevenshs = 0;
+                foreach (List<int> item1 in sevensstats)
+                {
+                    if (item1[0] > sevenshs)
+                    {
+                        sevenshs = item1[0];
+                    }
+                    else if (item1[2] > sevenshs)
+                    {
+                        sevenshs = item1[2];
+                    }
+                }
+                Console.Write("sevens out high score is ");
+                Console.WriteLine(sevenshs);
+            }
+
+            if (threesstats.Count == 0)
+            {
+                Console.WriteLine("no three or more scores recorded");
+            }
+            else
+            {
+                int threeshs = 0;
+                foreach (List<int> item1 in threesstats)
+                {
+                    if (item1[0] > threeshs)
+                    {
+                        threeshs = item1[0];
+                    }
+                    else if (item1[1] > threeshs)
+                    {
+                        threeshs = item1[1];
+                    }
+                }
+                Console.Write("three or more high score is ");
+                Console.WriteLine(threeshs);
+            }
+        }
     }
 }

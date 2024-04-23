@@ -9,6 +9,7 @@ namespace CMP1903_A1_2324
     internal class Stats
     {
         public List<List<int>> sevensstats = new List<List<int>>();
+        public List<List<int>> threesstats = new List<List<int>>();
 
         public void storesevens(int p1, int c1, int p2, int c2)
         {
@@ -19,6 +20,15 @@ namespace CMP1903_A1_2324
             dataset.Add(c2);
             sevensstats.Add(dataset);
         }
+
+        public void storethrees(int p1, int p2)
+        {
+            List<int> dataset = new List<int>();
+            dataset.Add(p1);
+            dataset.Add(p2);
+            threesstats.Add(dataset);
+        }
+
         public void display()
         {
             Console.WriteLine("displaying stats");
@@ -31,6 +41,21 @@ namespace CMP1903_A1_2324
                 Console.Write("game ");
                 Console.WriteLine(gamecount);
                 foreach (int item2 in  item1)
+                {
+                    Console.Write(item2);
+                    Console.Write(";");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("three or more games");
+            Console.WriteLine("player1 score; player 2 score");
+            gamecount = 0;
+            foreach (List<int> item1 in threesstats)
+            {
+                gamecount++;
+                Console.Write("game ");
+                Console.WriteLine(gamecount);
+                foreach (int item2 in item1)
                 {
                     Console.Write(item2);
                     Console.Write(";");

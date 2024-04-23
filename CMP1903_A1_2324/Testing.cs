@@ -9,12 +9,12 @@ namespace CMP1903_A1_2324
 {
     internal class Testing
     {
-        public Game game = new Game();
-        //Method
-        //creates and tests the dice code and the game code
+        private SevensOut sevens;
+        private ThreeOrMore threes;
         public void TestRun()
         {
-
+            int[] sevensdata = sevens.testrun();
+            Debug
         }
     }
 }

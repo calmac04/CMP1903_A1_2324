@@ -11,24 +11,37 @@ namespace CMP1903_A1_2324
 {
     internal class ThreeOrMore : Game
     {
+
         public int largestkey = 0;
         public int largestcount = 0;
         public int p1 = 0;
+        public int p2 = 0;
         public void Run(Stats data) 
         {
+            string select = "a";
+            while (select != "y" && select != "n")
+            {
+                Console.WriteLine("play against pc y/n");
+                select = Console.ReadLine();
+                if (select == "y")
+                {
+                    aienabled = true;
+                }
+                else if (select == "n")
+                {
+                    aienabled = false;
+                }
+            }
             while (gameend == false)
             {
+                largestkey = 0;
+                largestcount = 0;
                 if (player1 == true)
                 {
+                    Console.WriteLine("player 1's turn");
                     Check(Dice(5));
-                    Console.Write("your best group was ");
-                    Console.Write(largestcount);
-                    Console.Write(" ");
-                    Console.Write(largestkey);
-                    Console.WriteLine("'s");
-                    while (player1 == true)
+                    while (true)
                     {
-
                         if (largestcount == 3)
                         {
                             p1 += 3;
@@ -66,6 +79,7 @@ namespace CMP1903_A1_2324
                             else if (rerollselect == 1)
                             {
                                 Console.WriteLine("rerolling");
+                                break;
                             }
                             else
                             {
@@ -86,20 +100,189 @@ namespace CMP1903_A1_2324
                                     redoarray[i] = newrolls[i];
                                 }
                                 Check(redoarray);
-                                Console.Write("your best group was ");
-                                Console.Write(largestcount);
-                                Console.Write(" ");
-                                Console.Write(largestkey);
-                                Console.WriteLine("'s");
+                                player1 = false;
+                                break;
                             }
                         }
                     }
+                    Console.Write("score is ");
+                    Console.WriteLine(p1);
+                    if (p1 >= 20)
+                    {
+                        gameend = true;
+                    }
                 }
-                Console.WriteLine("new player turn");
-                Console.ReadLine();
+                else
+                {
+                    if (!aienabled) 
+                    {
+                        Console.WriteLine("player 2's turn");
+                        Check(Dice(5));
+                        while (true)
+                        {
+                            if (largestcount == 3)
+                            {
+                                p2 += 3;
+                                player1 = true;
+                                break;
+                            }
+                            else if (largestcount == 4)
+                            {
+                                p2 += 6;
+                                player1 = true;
+                                break;
+                            }
+                            else if (largestcount == 5)
+                            {
+                                p2 += 12;
+                                player1 = true;
+                                break;
+                            }
+                            else if (largestcount <= 1)
+                            {
+                                player1 = true;
+                                break;
+                            }
+                            else
+                            {
+                                int rerollselect = 0;
+                                Console.WriteLine("1 - reroll all");
+                                Console.WriteLine("2 - reroll 3");
+                                string selectstring = Console.ReadLine();
+                                Int32.TryParse(selectstring, out rerollselect);
+                                if (rerollselect >= 3 || rerollselect <= 0)
+                                {
+                                    Console.WriteLine("please enter a valid response");
+                                }
+                                else if (rerollselect == 1)
+                                {
+                                    Console.WriteLine("rerolling");
+                                    break;
+                                }
+                                else
+                                {
+                                    List<int> newrolls = new List<int>();
+                                    int toadd = largestkey + 0;
+                                    newrolls.Clear();
+                                    newrolls.Add(toadd);
+                                    newrolls.Add(toadd);
+                                    foreach (int item in Dice(3))
+                                    {
+                                        newrolls.Add(item);
+                                    }
+                                    newrolls.Remove(0);
+                                    newrolls.Remove(0);
+                                    int[] redoarray = new int[5];
+                                    for (int i = 0; i < newrolls.Count; i++)
+                                    {
+                                        redoarray[i] = newrolls[i];
+                                    }
+                                    Check(redoarray);
+                                    player1 = true;
+                                    break;
+                                }
+                            }
+                        }
+                        Console.Write("score is ");
+                        Console.WriteLine(p2);
+                        if (p2 >= 20)
+                        {
+                            gameend = true;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("AI's turn");
+                        Check(Dice(5));
+                        while (true)
+                        {
+                            if (largestcount == 3)
+                            {
+                                p2 += 3;
+                                player1 = true;
+                                break;
+                            }
+                            else if (largestcount == 4)
+                            {
+                                p2 += 6;
+                                player1 = true;
+                                break;
+                            }
+                            else if (largestcount == 5)
+                            {
+                                p2 += 12;
+                                player1 = true;
+                                break;
+                            }
+                            else if (largestcount <= 1)
+                            {
+                                player1 = true;
+                                break;
+                            }
+                            else
+                            {
+                                List<int> newrolls = new List<int>();
+                                int toadd = largestkey + 0;
+                                newrolls.Clear();
+                                newrolls.Add(toadd);
+                                newrolls.Add(toadd);
+                                foreach (int item in Dice(3))
+                                {
+                                    newrolls.Add(item);
+                                }
+                                newrolls.Remove(0);
+                                newrolls.Remove(0);
+                                int[] redoarray = new int[5];
+                                for (int i = 0; i < newrolls.Count; i++)
+                                {
+                                    redoarray[i] = newrolls[i];
+                                }
+                                Check(redoarray);
+                                player1 = true;
+                                break;
+                            }
+                        }
+                    }
+                    Console.Write("score is ");
+                    Console.WriteLine(p2);
+                    if (p2 >= 20)
+                    {
+                        gameend = true;
+                    }
+                }
             }
             Console.WriteLine("game over");
-            Console.ReadLine();
+            if (!aienabled)
+            {
+                if (p1 > p2)
+                {
+                    Console.WriteLine("player 1 wins");
+                }
+                else if (p1 < p2)
+                {
+                    Console.WriteLine("player 2 wins");
+                }
+                else
+                {
+                    Console.WriteLine("tie game");
+                }
+            }
+            else
+            {
+                if (p1 > p2)
+                {
+                    Console.WriteLine("player wins");
+                }
+                else if (p1 < p2)
+                {
+                    Console.WriteLine("AI wins");
+                }
+                else
+                {
+                    Console.WriteLine("tie game");
+                }
+            }
+            data.storethrees(p1, p2);
         }
 
         private int[] Dice(int num)
@@ -136,7 +319,11 @@ namespace CMP1903_A1_2324
                     }
                 }
             }
-
+            Console.Write("your best group was ");
+            Console.Write(largestcount);
+            Console.Write(" ");
+            Console.Write(largestkey);
+            Console.WriteLine("'s");
         }
     }
 }

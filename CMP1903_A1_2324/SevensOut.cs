@@ -109,9 +109,13 @@ namespace CMP1903_A1_2324
                 {
                     Console.WriteLine("player 1 wins");
                 }
-                else
+                else if (p1 < p2)
                 {
                     Console.WriteLine("player 2 wins");
+                }
+                else
+                {
+                    Console.WriteLine("tie game");
                 }
             }
             else
@@ -120,12 +124,42 @@ namespace CMP1903_A1_2324
                 {
                     Console.WriteLine("player wins");
                 }
-                else
+                else if (p1 < p2)
                 {
                     Console.WriteLine("AI wins");
                 }
+                else
+                {
+                    Console.WriteLine("tie game");
+                }
             }
             data.storesevens(p1, c1, p2, c2);
+        }
+
+        public int[] testrun()
+        {
+            int pt = 0;
+            int[] currentroll = Roll2();
+            int wt = 0;
+            while (gameend)
+            {
+                foreach (int item in currentroll)
+                {
+                    Console.Write(item);
+                    Console.Write(" ");
+                    pt += item;
+                }
+                Console.WriteLine();
+                if (currentroll[0] + currentroll[1] == 7)
+                {
+                    wt = currentroll[0] + currentroll[1];
+                    gameend = true;
+                }
+            }
+            int[] testdata = new int[2];
+            testdata[0] = pt;
+            testdata[1] = wt;
+            return testdata;
         }
     }
 }

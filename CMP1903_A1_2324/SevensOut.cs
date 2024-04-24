@@ -35,12 +35,22 @@ namespace CMP1903_A1_2324
                 {
                     c1 += 1;
                     int[] currentroll = Roll2();
-                    foreach (int item in currentroll)
+                    if (currentroll[0] != currentroll[1])
                     {
-                        Console.Write(item);
-                        Console.Write(" ");
-                        p1 += item;
+                        foreach (int item in currentroll)
+                        {
+                            Console.Write(item);
+                            Console.Write(" ");
+                            p1 += item;
+                        }
                     }
+                    else
+                        foreach (int item in currentroll)
+                        {
+                            Console.Write(item);
+                            Console.Write(" ");
+                            p1 += item * 2;
+                        }
                     Console.WriteLine();
                     if (currentroll[0] + currentroll[1] == 7)
                     {
@@ -65,12 +75,22 @@ namespace CMP1903_A1_2324
                     {
                         c2 += 1;
                         int[] currentroll = Roll2();
-                        foreach (int item in currentroll)
+                        if (currentroll[0] != currentroll[1])
                         {
-                            Console.Write(item);
-                            Console.Write(" ");
-                            p2 += item;
+                            foreach (int item in currentroll)
+                            {
+                                Console.Write(item);
+                                Console.Write(" ");
+                                p2 += item;
+                            }
                         }
+                        else
+                            foreach (int item in currentroll)
+                            {
+                                Console.Write(item);
+                                Console.Write(" ");
+                                p2 += item * 2;
+                            }
                         Console.WriteLine();
                         if (currentroll[0] + currentroll[1] == 7)
                         {
@@ -84,12 +104,22 @@ namespace CMP1903_A1_2324
                     {
                         c2 += 1;
                         int[] currentroll = Roll2();
-                        foreach (int item in currentroll)
+                        if (currentroll[0] != currentroll[1])
                         {
-                            Console.Write(item);
-                            Console.Write(" ");
-                            p2 += item;
+                            foreach (int item in currentroll)
+                            {
+                                Console.Write(item);
+                                Console.Write(" ");
+                                p2 += item;
+                            }
                         }
+                        else
+                            foreach (int item in currentroll)
+                            {
+                                Console.Write(item);
+                                Console.Write(" ");
+                                p2 += item * 2;
+                            }
                         Console.WriteLine();
                         if (currentroll[0] + currentroll[1] == 7)
                         {
@@ -147,10 +177,22 @@ namespace CMP1903_A1_2324
                 int[] currentroll = Roll2();
                 testdata[datacount] = currentroll[0] + currentroll[1];
                 datacount++;
-                foreach (int item in currentroll)
+                if (currentroll[0] != currentroll[1])
                 {
-                    pt += item;
+                    foreach (int item in currentroll)
+                    {
+                        Console.Write(item);
+                        Console.Write(" ");
+                        pt += item;
+                    }
                 }
+                else
+                    foreach (int item in currentroll)
+                    {
+                        Console.Write(item);
+                        Console.Write(" ");
+                        pt += item * 2;
+                    }
                 if (currentroll[0] + currentroll[1] == 7)
                 {
                     wt = currentroll[0] + currentroll[1];

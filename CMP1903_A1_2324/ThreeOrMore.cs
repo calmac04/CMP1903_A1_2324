@@ -11,7 +11,8 @@ namespace CMP1903_A1_2324
 {
     internal class ThreeOrMore : Game
     {
-
+        //this is the class that runs the three or more game
+        //here the main variables are created
         public int largestkey = 0;
         public int largestcount = 0;
         public int p1 = 0;

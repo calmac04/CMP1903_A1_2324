@@ -9,117 +9,177 @@ namespace CMP1903_A1_2324
 {
     internal class SevensOut : Game
     {
+        //this method runs the game 
         public void Run(Stats data)
         {
+            //first the game needs to determine whether there is a second player or not
+            //selection variable is made
             string select = "a";
+            //while there is an invalid selection
             while (select != "y" && select != "n")
             {
+                //ask the user if they want to play against an ai
                 Console.WriteLine("play against pc y/n");
+                //store their response
                 select = Console.ReadLine();
+                //check what their response is
                 if (select == "y")
                 {
+                    //if yes enable ai
                     aienabled = true;
                 }
                 else if (select == "n") 
                 { 
+                    //if no disable ai
                     aienabled = false;
                 }
             }
+            //declare the main score and counter variables
             int p1 = 0;
             int p2 = 0;
             int c1 = 0;
             int c2 = 0;
+            //while the game is running
             while (gameend == false)
             {
+                //if it is player 1s turn
                 if (player1 == true)
                 {
+                    //increment player turn counter by 1
                     c1 += 1;
+                    //create the players die rolls
                     int[] currentroll = Roll2();
+                    //if the player has not rolled doubles
                     if (currentroll[0] != currentroll[1])
                     {
+                        //for each roll
                         foreach (int item in currentroll)
                         {
+                            //print the value of the roll
                             Console.Write(item);
                             Console.Write(" ");
+                            //add the rolled number to the players score
                             p1 += item;
                         }
                     }
+                    //if the player did roll doubles
                     else
+                    {
+                        //for both rolls
                         foreach (int item in currentroll)
                         {
+                            //read out the number rolled
                             Console.Write(item);
                             Console.Write(" ");
+                            //add double the roll
                             p1 += item * 2;
                         }
+                    }
+                    //write a new line for formatting
                     Console.WriteLine();
+                    //if the total of the rolls is seven
                     if (currentroll[0] + currentroll[1] == 7)
                     {
+                        //write what has happened to the player along with their final score
                         Console.WriteLine("seven rolled");
                         Console.Write("your total score is ");
                         Console.WriteLine(p1);
+                        //switch to the other players turn
                         player1 = false;
+                        //if the player is against an ai
                         if (aienabled == true)
                         {
+                            //write that it is the ais turn
                             Console.WriteLine("AI's Turn");
                         }
+                        //if the player is against another player
                         else
                         {
+                            //write that it is the second players turn
                             Console.WriteLine("Player 2's turn");
                         }
                     }
                 }
+                //if it isnt the 1st players turn
                 else
                 {
-                    
+                    //the following code functions near identically to the first players code with the exception of it adding score to a different total
+                    //if the ai is eneabled
                     if (aienabled == true)
                     {
+                        //increment player 2s turn counter
                         c2 += 1;
+                        //roll 2 dice and store them
                         int[] currentroll = Roll2();
+                        //if the player hasnt rolled doubles
                         if (currentroll[0] != currentroll[1])
                         {
+                            //for both dice
                             foreach (int item in currentroll)
                             {
+                                //write the roll to the player
                                 Console.Write(item);
                                 Console.Write(" ");
+                                //store the roll
                                 p2 += item;
                             }
                         }
+                        //if the player did roll doubles
                         else
+                        {
+                            //for every dice
                             foreach (int item in currentroll)
                             {
+                                //write the roll to the player
                                 Console.Write(item);
                                 Console.Write(" ");
+                                //add double the roll to the score
                                 p2 += item * 2;
                             }
+                        }
+                        //write a new line for formatting
                         Console.WriteLine();
+                        //if the player rolled a seven
                         if (currentroll[0] + currentroll[1] == 7)
                         {
+                            //display what has happened to the user and their score
                             Console.WriteLine("seven rolled");
                             Console.Write("AI total score is ");
                             Console.WriteLine(p2);
+                            //end the game
                             gameend = true;
                         }
                     }
+                    //if another player is playing
                     else 
                     {
+                        //increment player turn counter
                         c2 += 1;
+                        //roll 2 dice and save the rolls
                         int[] currentroll = Roll2();
+                        //if the rolls arent doubles
                         if (currentroll[0] != currentroll[1])
                         {
+                            //for every die
                             foreach (int item in currentroll)
                             {
+                                //write the rolled value
                                 Console.Write(item);
                                 Console.Write(" ");
+                                //increment the players score
                                 p2 += item;
                             }
                         }
+
                         else
+                        {
                             foreach (int item in currentroll)
                             {
                                 Console.Write(item);
                                 Console.Write(" ");
                                 p2 += item * 2;
                             }
+                        }
                         Console.WriteLine();
                         if (currentroll[0] + currentroll[1] == 7)
                         {

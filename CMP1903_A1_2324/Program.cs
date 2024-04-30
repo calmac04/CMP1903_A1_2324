@@ -61,6 +61,11 @@ namespace CMP1903_A1_2324
                     //display the highscores
                     data.highscores();
                 }
+                else if (menuselect == 4)
+                {
+                    Testing test = new Testing();
+                    test.TestRun();
+                }
             }
         }
     }

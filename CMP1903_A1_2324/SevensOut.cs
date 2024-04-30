@@ -170,96 +170,139 @@ namespace CMP1903_A1_2324
                                 p2 += item;
                             }
                         }
-
+                        //if the rolls are doubles
                         else
                         {
+                            //for both dice
                             foreach (int item in currentroll)
                             {
+                                //print the roll value
                                 Console.Write(item);
                                 Console.Write(" ");
+                                //add double the value
                                 p2 += item * 2;
                             }
                         }
+                        //write a blank line for formatting
                         Console.WriteLine();
+                        //if the total is 7
                         if (currentroll[0] + currentroll[1] == 7)
                         {
+                            //write what has occured
                             Console.WriteLine("seven rolled");
                             Console.Write("Player 2 total score is ");
                             Console.WriteLine(p2);
+                            //end the game
                             gameend = true;
                         }
                     }
                     
                 }
             }
+            //write that the game is over
             Console.WriteLine("game is over");
+            //if the player was against a person
             if (!aienabled)
             {
+                //if player1 beat player 2
                 if (p1 > p2)
                 {
+                    //write player 1 won
                     Console.WriteLine("player 1 wins");
                 }
+                //if player 2 won
                 else if (p1 < p2)
                 {
+                    //write player 2 won
                     Console.WriteLine("player 2 wins");
                 }
+                //if the game is tied
                 else
                 {
+                    //write that the game is tied
                     Console.WriteLine("tie game");
                 }
             }
+            //if the player played against ai
             else
             {
+                //if the player beat the ai
                 if (p1 > p2)
                 {
+                    //write that the player won
                     Console.WriteLine("player wins");
                 }
+                //if the ai won
                 else if (p1 < p2)
                 {
+                    //write that the ai won
                     Console.WriteLine("AI wins");
                 }
+                //if the game was a tie
                 else
                 {
+                    //write that the game was a tie
                     Console.WriteLine("tie game");
                 }
             }
+            //store the data for the game
             data.storesevens(p1, c1, p2, c2);
         }
-
+        //this method runs a streamlined version of the game for testing purposes
         public List<int> testrun()
         {
+            //set the score winning total and data count to default along with making a list to store the data in
             int pt = 0;
             int wt = 0;
-            int datacount = 1;
             List<int> testdata = new List<int>();
+            testdata.Add(0);
+            //while the game is running
             while (gameend == false)
             {
+                //roll 2 dice and store them
                 int[] currentroll = Roll2();
-                testdata[datacount] = currentroll[0] + currentroll[1];
-                datacount++;
+                //store the total of the rolls
+                testdata.Add(currentroll[0] + currentroll[1]);
+                //if the rolls arent doubles
                 if (currentroll[0] != currentroll[1])
                 {
+                    //for both dice
                     foreach (int item in currentroll)
                     {
+                        //print the roll value
                         Console.Write(item);
                         Console.Write(" ");
+                        //add their values to the score
                         pt += item;
                     }
                 }
+                //if the rolls are doubles
                 else
+                {
+                    //for each die
                     foreach (int item in currentroll)
                     {
+                        //print the roll value
                         Console.Write(item);
                         Console.Write(" ");
+                        //add double the value to the score
                         pt += item * 2;
                     }
+                }
+                //write a new line for formatting
+                Console.WriteLine();
+                //if the current total is 7
                 if (currentroll[0] + currentroll[1] == 7)
                 {
+                    //save current total as winning total
                     wt = currentroll[0] + currentroll[1];
+                    //end the game
                     gameend = true;
                 }
             }
+            //store the winning total in teh first index
             testdata[0] = wt;
+            //return the data array
             return testdata;
         }
     }
